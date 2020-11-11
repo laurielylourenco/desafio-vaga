@@ -31,15 +31,8 @@ class HomeController extends Controller
     //listar os dados que usuario salvou 
     $user = auth()->user();
     $id = $user->id;
-
     $planetaSalvo = User::planetaSalvo($id);
     $naveSalva = User::naveSalvo($id);
-
     return view('admin.itens', compact('planetaSalvo', 'naveSalva'));
-
-
-    
-
-
    }
 }

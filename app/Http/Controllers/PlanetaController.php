@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Planeta;
 use App\User;
 use GuzzleHttp\Client;
-use URL;
-
 
 class PlanetaController extends Controller
 {
@@ -29,14 +27,13 @@ class PlanetaController extends Controller
             return view('admin.planeta.index', compact('planets','nextPage','previous'));
 
         }catch (\Exception $e){
-            echo "deu erro aqui".$e->getMessage();
+            abort(404);
         }
         
      }  
 
     //funcao que esta listando os detalhes dos planetas
-     public function detalhesPlanetas(Request $planets){        
-           
+     public function detalhesPlanetas(Request $planets){                
         return view("admin.planeta.detalhes", compact("planets"));
      }
 
@@ -68,7 +65,7 @@ class PlanetaController extends Controller
 
         } catch (\Throwable $th) {
             //throw $th;
-            echo "Erro ao cadastrar".$th->getMessage();
+            abort(500);
         }
         
      }

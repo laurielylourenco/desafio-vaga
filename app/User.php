@@ -39,31 +39,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-   /*  protected function getID(){
-        $user = User::all();
-        $user = DB::table('users')->select('id')->get();
-            return $user;
-    }  */
-
      protected function planetas(){
-        return $this->hasMany('App\Planeta','user_id');
+        return $this->hasMany(Planeta::class);
     } 
 
       protected function naves(){
-        return $this->hasMany('App\Nave', 'user_id');
+        return $this->hasMany(Nave::class);
     } 
 
-
     protected function planetaSalvo($id){
-    
         $users = User::all();
         $user = $users->find($id);  
-
         return  $planetas = User::find($id)->planetas;
-
-       /*  $planetas = User::with('planetas')->find($id); */
-        
-    
     }
 
 
